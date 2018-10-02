@@ -1,6 +1,7 @@
 <?php
 
-namespace Sportmonks\SoccerAPI\Requests;
+
+namespace MyVendor\Superkora;
 
 
 use Sportmonks\SoccerAPI\SoccerAPIClient;
@@ -14,7 +15,7 @@ class Country extends SoccerAPIClient {
 
     public function byId($countryId)
     {
-        return $this->call('getcountries/' . $countryId);
+        return $this->call('CountryId/' . $countryId);
     }
 
 }

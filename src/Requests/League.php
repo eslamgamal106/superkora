@@ -1,10 +1,12 @@
 <?php
 
-namespace Sportmonks\SoccerAPI\Requests;
 
-use Sportmonks\SoccerAPI\SoccerAPIClient;
+namespace MyVendor\Superkora;
 
-class League extends SoccerAPIClient {
+
+use Superkora\SuperkoraClient;
+
+class League extends SuperkoraClient {
 
     public function all()
     {
