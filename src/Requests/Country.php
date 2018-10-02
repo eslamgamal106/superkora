@@ -4,9 +4,9 @@
 namespace MyVendor\Superkora;
 
 
-use Sportmonks\SoccerAPI\SoccerAPIClient;
+use Superkora\SuperkoraClient;
 
-class Country extends SoccerAPIClient {
+class Country extends SuperkoraClient {
 
     public function all()
     {
