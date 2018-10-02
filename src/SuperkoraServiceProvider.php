@@ -23,15 +23,6 @@ class SuperkoraServiceProvider extends ServiceProvider
             $this->bootForConsole();
         }
 
-        $configPath = __DIR__.'/../../config';
-
-        $this->mergeConfigFrom($configPath.'/config.php', 'superkora');
-
-        $this->publishes([
-            $configPath.'/config.php' => config_path('superkora.php'),
-        ], 'config');
-
-
 
 
     }
