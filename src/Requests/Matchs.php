@@ -1,20 +1,21 @@
 <?php
 
+
 namespace MyVendor\Superkora;
+
 
 use  MyVendor\Superkora\SuperkoraClient;
 
-class Team extends SuperkoraClient {
+class Matchs extends SuperkoraClient {
 
     public function all()
     {
-        return $this->callData('getteamsbyleagueid');
-
+        return $this->callData('getfixtures');
     }
+
     public function byId($leagueId)
     {
-        return $this->call('getteamsbyleagueid/' . $leagueId);
+        return $this->call('getfixtures/' . $leagueId);
     }
- 
 
 }
