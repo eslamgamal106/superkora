@@ -27,13 +27,13 @@ class SuperkoraClient {
         ];
         $this->client = new Client($options);
 
-        $this->apiToken = config('soccerapi.api_token');
+      /*   $this->apiToken = config('soccerapi.api_token');
         if(empty($this->apiToken))
         {
             throw new \InvalidArgumentException('No API token set');
         }
 
-        $this->withoutData = empty(config('soccerapi.without_data')) ? false : config('soccerapi.without_data');
+        $this->withoutData = empty(config('soccerapi.without_data')) ? false : config('soccerapi.without_data'); */
     }
 
     protected function call($url, $hasData = false)

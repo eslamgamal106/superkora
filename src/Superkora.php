@@ -3,11 +3,11 @@
 
 namespace MyVendor\Superkora;
 
-use Superkora\Requests\League;
-use Superkora\Requests\Country;
+use MyVendor\Superkora\League;
+use MyVendor\Superkora\Country;
+use MyVendor\Superkora\Team;
 
 class Superkora {
-
 
     public function leagues()
     {
@@ -17,6 +17,11 @@ class Superkora {
     public function countries()
     {
         return new Country();
+    }
+
+    public function teams()
+    {
+        return new Team();
     }
 
 }

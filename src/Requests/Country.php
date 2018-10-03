@@ -4,7 +4,7 @@
 namespace MyVendor\Superkora;
 
 
-use Superkora\SuperkoraClient;
+use  MyVendor\Superkora\SuperkoraClient;
 
 class Country extends SuperkoraClient {
 
