@@ -23,7 +23,7 @@ class SuperkoraServiceProvider extends ServiceProvider
             $this->bootForConsole();
         }
 
-        include __DIR__.'/routes.php';
+    
 
     }
 
