@@ -15,8 +15,9 @@ class Match extends SuperkoraClient {
 
     public function byId($matchId)
     {
-        return $this->call('getmatchcenter/' . $matchId);
+        return $this->setBody([ 'matchId' => $matchId ])->call('getmatchcenter');
     }
+
 
 
 

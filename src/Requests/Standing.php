@@ -12,10 +12,10 @@ class Standing extends SuperkoraClient {
     {
         return $this->callData('getseasonstandings');
     }
-
+    
     public function byId($leagueId)
     {
-        return $this->call('getseasonstandings/' . $leagueId);
+        return $this->setBody([ 'leagueId' => $leagueId ])->call('getseasonstandings');
     }
 
 }

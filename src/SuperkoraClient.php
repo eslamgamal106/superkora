@@ -7,14 +7,9 @@ use Superkora\Exceptions\ApiRequestException;
 
 class SuperkoraClient {
 
-    /* @var $client Client */
-    protected $client;
-
-    protected $apiToken;
     protected $withoutData;
     protected $include = [];
-    protected $perPage = 50;
-    protected $page = 1;
+    protected $body = [];
     
     public function __construct()
     {
@@ -38,17 +33,8 @@ class SuperkoraClient {
 
     protected function call($url, $hasData = false)
     {
-        $query = [
-            'api_token' => $this->apiToken,
-            'per_page' => $this->perPage,
-            'page' => $this->page
-        ];
-        if(count($this->include))
-        {
-            $query['include'] = $this->include;
-        }
-
-        $response = $this->client->get($url, ['query' => $query]);
+       
+        $response = $this->client->request('POST',$url, ['json' => $this->body]);
 
         $body = json_decode($response->getBody()->getContents());
 
@@ -78,39 +64,14 @@ class SuperkoraClient {
     {
         return $this->call($url, true);
     }
-
-    /**
-     * @param $include - string or array of relations to include with the query
-     */
-    public function setInclude($include)
-    {
-        if(is_array($include) && !empty($include))
+    
+    public function setBody($params) {
+        if(is_array($params) && !empty($params))
         {
-            $include = implode(',', $include);
+            $params = $params;
+            // $params = implode(',', $params);
         }
-
-        $this->include = $include;
-
-        return $this;
-    }
-
-    /**
-     * @param $perPage - int of per_page limit data in request
-     */
-    public function setPerPage($perPage)
-    {
-        $this->perPage = $perPage;
-
-        return $this;
-    }
-
-    /**
-     * @param $page - int of requested page
-     */
-    public function setPage($page)
-    {
-        $this->page = $page;
-
-        return $this;
+        $this->body = $params;
+       return $this;
     }
 }

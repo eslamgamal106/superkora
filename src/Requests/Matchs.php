@@ -15,7 +15,7 @@ class Matchs extends SuperkoraClient {
 
     public function byId($leagueId)
     {
-        return $this->call('getfixtures/' . $leagueId);
+        return $this->setBody([ 'leagueId' => $leagueId ])->call('getfixtures');
     }
 
 }

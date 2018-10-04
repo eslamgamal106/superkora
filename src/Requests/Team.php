@@ -13,7 +13,7 @@ class Team extends SuperkoraClient {
     }
     public function byId($leagueId)
     {
-        return $this->call('getteamsbyleagueid/' . $leagueId);
+        return $this->setBody([ 'leagueId' => $leagueId ])->call('getteamsbyleagueid');
     }
  
 
