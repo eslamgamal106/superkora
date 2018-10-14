@@ -38,19 +38,25 @@ class SuperkoraClient {
 
         $body = json_decode($response->getBody()->getContents());
 
-        if(property_exists($body, 'error'))
-        {
-            if(is_object($body->error))
-            {
-                throw new ApiRequestException($body->error->message, $body->error->code);
-            }
-            else
-            {
-                throw new ApiRequestException($body->error, 500);
-            }
-
-            return $response;
+        try {
+             return $response;
+        } catch (Exception $e) {
+               return response()->json(['error' => $e->getMessage()], 500);
         }
+
+        // if(property_exists($body, 'error'))
+        // {
+        //     if(is_object($body->error))
+        //     {
+        //         throw new ApiRequestException($body->error->message, $body->error->code);
+        //     }
+        //     else
+        //     {
+        //         throw new ApiRequestException($body->error, 500);
+        //     }
+
+        //     return $response;
+        // }
 
         if($hasData && $this->withoutData)
         {
@@ -69,7 +75,7 @@ class SuperkoraClient {
         if(is_array($params) && !empty($params))
         {
             $params = $params;
-            // $params = implode(',', $params);
+            
         }
         $this->body = $params;
        return $this;

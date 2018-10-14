@@ -20,6 +20,7 @@ class Superkora {
     {
         return new Matchs();
     }
+    
 
     public function teams()
     {
