@@ -33,37 +33,21 @@ class SuperkoraClient {
 
     protected function call($url, $hasData = false)
     {
-       
-        $response = $this->client->request('POST',$url, ['json' => $this->body]);
-
-        $body = json_decode($response->getBody()->getContents());
-
         try {
-             return $response;
-        } catch (Exception $e) {
-               return response()->json(['error' => $e->getMessage()], 500);
+
+            $response = $this->client->request('POST',$url, ['json' => $this->body]);
+            $data = json_decode($response->getBody()->getContents());
+            return $data;  
+        
+        }  catch (\Exception $e) {
+           
+            if ($e->getResponse()->getStatusCode() == '400') {
+                echo "Got response 400";
+            }
+            if ($e->getResponse()->getStatusCode() == '500') {
+                echo "Got response 500";
+            }
         }
-
-        // if(property_exists($body, 'error'))
-        // {
-        //     if(is_object($body->error))
-        //     {
-        //         throw new ApiRequestException($body->error->message, $body->error->code);
-        //     }
-        //     else
-        //     {
-        //         throw new ApiRequestException($body->error, 500);
-        //     }
-
-        //     return $response;
-        // }
-
-        if($hasData && $this->withoutData)
-        {
-            return $body->data;
-        }
-
-        return $body;
     }
 
     protected function callData($url)
